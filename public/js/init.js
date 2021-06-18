@@ -94,8 +94,15 @@ jQuery(document).ready(function($) {
         jsonp: 'c',
         success: function(msg) {
           // Message was sent
-          debugger;
           if (msg.result == "success") {
+            mParticle.logEvent(
+              'Form Submitted',
+              mParticle.EventType.Transaction,
+              {'category':'Form Submitted','title':'Lambo FTW'}
+            );
+            var currentUser = mParticle.Identity.getCurrentUser();
+            currentUser.setUserAttribute("$FirstName", firstName);
+            currentUser.setUserAttribute("$LastName", lastName);
             $("#image-loader").fadeOut();
             $("#message-warning").hide();
             $("#contactForm").fadeOut();
@@ -103,6 +110,11 @@ jQuery(document).ready(function($) {
           }
           // There was an error
           else {
+            mParticle.logEvent(
+              'Form Error',
+              mParticle.EventType.Navigation,
+              {'category':'Form Error','title':msg.msg}
+            );
             $("#image-loader").fadeOut();
             $("#message-warning").html(msg.msg);
             $("#message-warning").fadeIn();
