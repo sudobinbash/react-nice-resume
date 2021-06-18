@@ -15,28 +15,15 @@ class Resume extends Component {
     if (!this.props.data) return null;
 
     const skillmessage = this.props.data.skillmessage;
-    const education = this.props.data.education.map(function (education) {
+    const models = this.props.data.models.map(function (models) {
       return (
-        <div key={education.school}>
-          <h3>{education.school}</h3>
+        <div key={models.name}>
+          <h3>{models.name}</h3>
           <p className="info">
-            {education.degree} <span>&bull;</span>
-            <em className="date">{education.graduated}</em>
+            {models.highlight} <span>&bull;</span>
+            <em className="date">{models.deliveryEta}</em>
           </p>
-          <p>{education.description}</p>
-        </div>
-      );
-    });
-
-    const work = this.props.data.work.map(function (work) {
-      return (
-        <div key={work.company}>
-          <h3>{work.company}</h3>
-          <p className="info">
-            {work.title}
-            <span>&bull;</span> <em className="date">{work.years}</em>
-          </p>
-          <p>{work.description}</p>
+          <p>{models.description}</p>
         </div>
       );
     });
@@ -57,30 +44,18 @@ class Resume extends Component {
     return (
       <section id="resume">
         <Slide left duration={1300}>
-          <div className="row education">
+          <div className="row models">
             <div className="three columns header-col">
               <h1>
-                <span>Education</span>
+                <span>Models Available</span>
               </h1>
             </div>
 
             <div className="nine columns main-col">
               <div className="row item">
-                <div className="twelve columns">{education}</div>
+                <div className="twelve columns">{models}</div>
               </div>
             </div>
-          </div>
-        </Slide>
-
-        <Slide left duration={1300}>
-          <div className="row work">
-            <div className="three columns header-col">
-              <h1>
-                <span>Work</span>
-              </h1>
-            </div>
-
-            <div className="nine columns main-col">{work}</div>
           </div>
         </Slide>
 
@@ -88,7 +63,7 @@ class Resume extends Component {
           <div className="row skill">
             <div className="three columns header-col">
               <h1>
-                <span>Skills</span>
+                <span>Our Backlog</span>
               </h1>
             </div>
 

@@ -6,10 +6,10 @@ class Header extends Component {
   render() {
     if (!this.props.data) return null;
 
-    const project = this.props.data.project;
-    const github = this.props.data.github;
+    const cta = this.props.data.cta;
     const name = this.props.data.name;
     const description = this.props.data.description;
+    const descriptionHeadline = this.props.data.descriptionHeadline;
 
     return (
       <header id="home">
@@ -32,25 +32,25 @@ class Header extends Component {
 
             <li>
               <a className="smoothscroll" href="#about">
-                About
+                About Lambo Tendies
               </a>
             </li>
 
             <li>
               <a className="smoothscroll" href="#resume">
-                Resume
+                Models and Backlog
               </a>
             </li>
 
             <li>
               <a className="smoothscroll" href="#portfolio">
-                Works
+                Gallery
               </a>
             </li>
 
             <li>
               <a className="smoothscroll" href="#contact">
-                Contact
+                Get your Lambo
               </a>
             </li>
           </ul>
@@ -62,16 +62,16 @@ class Header extends Component {
               <h1 className="responsive-headline">{name}</h1>
             </Fade>
             <Fade bottom duration={1200}>
+              <h2>{descriptionHeadline}</h2>
+            </Fade>
+            <Fade bottom duration={2400}>
               <h3>{description}.</h3>
             </Fade>
             <hr />
             <Fade bottom duration={2000}>
               <ul className="social">
-                <a href={project} className="button btn project-btn">
-                  <i className="fa fa-book"></i>Project
-                </a>
-                <a href={github} className="button btn github-btn">
-                  <i className="fa fa-github"></i>Github
+                <a href={cta}  className="smoothscroll button btn project-btn">
+                  <i className="fa fa-shopping-cart"></i>Get my lambo
                 </a>
               </ul>
             </Fade>
