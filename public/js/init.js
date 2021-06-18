@@ -77,28 +77,25 @@ jQuery(document).ready(function($) {
     $("form#contactForm button.submit").click(function() {
       $("#image-loader").fadeIn();
 
-      var contactName = $("#contactForm #contactName").val();
+      var firstName = $("#contactForm #firstName").val();
+      var lastName = $("#contactForm #lastName").val();
       var contactEmail = $("#contactForm #contactEmail").val();
-      var contactSubject = $("#contactForm #contactSubject").val();
-      var contactMessage = $("#contactForm #contactMessage").val();
 
       var data =
-        "contactName=" +
-        contactName +
-        "&contactEmail=" +
-        contactEmail +
-        "&contactSubject=" +
-        contactSubject +
-        "&contactMessage=" +
-        contactMessage;
+        "FNAME="+firstName
+        +"&LNAME="+lastName
+        +"&EMAIL="+contactEmail;
 
       $.ajax({
-        type: "POST",
-        url: "inc/sendEmail.php",
+        type: "GET",
+        url: "https://gmail.us6.list-manage.com/subscribe/post-json?u=243abcc9f089c1b7a8c4c4ac5&amp;id=16f84ad99c",
         data: data,
+        dataType: 'jsonp',
+        jsonp: 'c',
         success: function(msg) {
           // Message was sent
-          if (msg == "OK") {
+          debugger;
+          if (msg.result == "success") {
             $("#image-loader").fadeOut();
             $("#message-warning").hide();
             $("#contactForm").fadeOut();
@@ -107,7 +104,7 @@ jQuery(document).ready(function($) {
           // There was an error
           else {
             $("#image-loader").fadeOut();
-            $("#message-warning").html(msg);
+            $("#message-warning").html(msg.msg);
             $("#message-warning").fadeIn();
           }
         }

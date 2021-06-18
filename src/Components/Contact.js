@@ -35,15 +35,29 @@ class Contact extends Component {
               <form action="" method="post" id="contactForm" name="contactForm">
                 <fieldset>
                   <div>
-                    <label htmlFor="contactName">
-                      Name <span className="required">*</span>
+                    <label htmlFor="firstName">
+                      First Name <span className="required">*</span>
                     </label>
                     <input
                       type="text"
                       defaultValue=""
                       size="35"
-                      id="contactName"
-                      name="contactName"
+                      id="firstName"
+                      name="firstName"
+                      onChange={this.handleChange}
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="lastName">
+                      Last Name <span className="required">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      defaultValue=""
+                      size="35"
+                      id="lastName"
+                      name="lastName"
                       onChange={this.handleChange}
                     />
                   </div>
@@ -60,30 +74,6 @@ class Contact extends Component {
                       name="contactEmail"
                       onChange={this.handleChange}
                     />
-                  </div>
-
-                  <div>
-                    <label htmlFor="contactSubject">Subject</label>
-                    <input
-                      type="text"
-                      defaultValue=""
-                      size="35"
-                      id="contactSubject"
-                      name="contactSubject"
-                      onChange={this.handleChange}
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="contactMessage">
-                      Message <span className="required">*</span>
-                    </label>
-                    <textarea
-                      cols="50"
-                      rows="15"
-                      id="contactMessage"
-                      name="contactMessage"
-                    ></textarea>
                   </div>
 
                   <div>
