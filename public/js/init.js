@@ -100,9 +100,16 @@ jQuery(document).ready(function($) {
               mParticle.EventType.Transaction,
               {'category':'Form Submitted','title':'Lambo FTW'}
             );
-            var currentUser = mParticle.Identity.getCurrentUser();
-            currentUser.setUserAttribute("$FirstName", firstName);
-            currentUser.setUserAttribute("$LastName", lastName);
+            // currentUser.setUserAttribute("$FirstName", firstName);
+            // currentUser.setUserAttribute("$LastName", lastName);
+            var identityRequest = { userIdentities: { email: contactEmail } };
+            var identityCallback = function(result) { 
+              if (result.getUser()) { 
+                result.getUser().setUserAttribute("$FirstName", firstName);
+                result.getUser().setUserAttribute("$LastName", lastName);
+              } 
+            };
+            mParticle.Identity.login(identityRequest, identityCallback);
             $("#image-loader").fadeOut();
             $("#message-warning").hide();
             $("#contactForm").fadeOut();
